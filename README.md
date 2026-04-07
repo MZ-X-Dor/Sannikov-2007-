@@ -1,8 +1,8 @@
-# Replication of Sannikov (2008) Figure 1
+# Replication of Sannikov (2007) Figure 1
 
 This repository provides a numerical replication of **Figure 1** from:
 
-> Sannikov, Y. (2008). *A Continuous-Time Version of the Principal-Agent Problem.*
+> Sannikov, Y. (2007). *A Continuous-Time Version of the Principal-Agent Problem.*
 
 ---
 
