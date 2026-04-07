@@ -6,11 +6,11 @@ This repository provides a numerical replication of **Figure 1** from:
 
 ---
 
-## 📌 Overview
+## Overview
 
 This project solves the continuous-time principal-agent model using the **HJB equation approach**. The key idea is to reduce the dynamic contracting problem to a **second-order ODE with boundary conditions**, where the state variable is the agent’s continuation value ( W ).
 
-We numerically compute:
+I numerically compute:
 
 * The principal’s value function ( F(W) )
 * Optimal effort ( a(W) )
@@ -19,9 +19,9 @@ We numerically compute:
 
 ---
 
-## ⚙️ Model Setup
+## Model Setup
 
-We follow the benchmark example in the paper:
+I follow the benchmark example in the paper:
 
 * Utility:
   ( u(c) = \sqrt{c} )
@@ -37,7 +37,7 @@ We follow the benchmark example in the paper:
 
 ---
 
-## 🧠 Methodology
+## Methodology
 
 ### 1. HJB Equation
 
@@ -57,7 +57,7 @@ with boundary conditions:
 
 ### 2. Shooting Method
 
-We solve the boundary value problem using a **shooting method**:
+I solve the boundary value problem using a **shooting method**:
 
 1. Guess initial slope ( p_0 = F'(0) )
 2. Solve the ODE forward
@@ -66,7 +66,7 @@ We solve the boundary value problem using a **shooting method**:
    * hits ( F_0 ) (valid path)
    * overshoots (never hits ( F_0 ))
 
-We search for the **largest ( p_0 )** such that the solution still hits ( F_0 ).
+I search for the **largest ( p_0 )** such that the solution still hits ( F_0 ).
 
 This is implemented via:
 
@@ -75,12 +75,12 @@ This is implemented via:
 
 ---
 
-## 🔍 Numerical Results
+## Numerical Results
 
 ### Shooting bracket
 
 ```
-=== found bracket: (2.445810055865922, 2.4608938547486034) ===
+found bracket: (2.445810055865922, 2.4608938547486034)
 ```
 
 ### Optimal initial slope
@@ -123,54 +123,7 @@ max drift         = 0.063206
 
 ---
 
-## 📈 Interpretation
-
-* The value function ( F(W) ) is **concave** and lies above ( F_0(W) )
-
-* Optimal contract exhibits:
-
-  * **probation region**: ( c(W) = 0 )
-  * **interior region**: increasing consumption
-  * **retirement boundary** at ( W_{gp} )
-
-* Effort is **non-monotonic**, reflecting:
-
-  * trade-off between incentive provision and risk
-
-* Drift is positive over most of the domain, pushing the agent toward retirement
-
----
-
-## ✅ Validation
-
-The numerical solution satisfies:
-
-* Value matching at ( W_{gp} )
-* Smooth pasting condition (approximate)
-* ( F(W) \ge F_0(W) ) along the path
-
-These confirm consistency with **Theorem 1** in the paper.
-
----
-
-## 🚀 Possible Extensions
-
-* Improve resolution of ( p_0 ) (tighter smooth pasting)
-* Alternative utility / cost functions
-* Add outside options or promotion (Section 4 of the paper)
-* Formal verification (e.g., Lean)
-
----
-
-## 📂 Structure
-
-```
-Sannikov Figure 1.py   # main script
-```
-
----
-
-## 📬 Notes
+## Notes
 
 This implementation focuses on clarity and economic structure rather than extreme numerical optimization. The code can be extended for more robust or high-precision solutions.
 
